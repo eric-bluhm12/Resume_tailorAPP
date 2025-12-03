@@ -1,0 +1,48 @@
+{
+  "name": "Jonathan Versino",
+  "email": "jonathan.versino12@outlook.com",
+  "phone": "+ 1 (847) 865-4591",
+  "location": " Deerfield, IL, United States",
+  "linkedin": "",
+  "website": "",
+
+  "experience": [
+    {
+      "company": "Snapsheet Inc",
+      "title": "Lead Software Engineer && Manager",
+      "location": "",
+      "start_date": "March 2021",
+      "end_date": "Present"
+    },
+    {
+      "company": "Snapsheet Inc",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "September 2019",
+      "end_date": "March 2021"
+    },
+    {
+      "company": "Motorola Solutions",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "June 2015",
+      "end_date": "August 2019"
+    },
+    {
+      "company": "Motorola Solutions",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "June 2010",
+      "end_date": "May 2015"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Engineering",
+      "school": "University of Kansas (KU)",
+      "start_year": "2003",
+      "end_year": "2009"
+    }
+  ]
+}

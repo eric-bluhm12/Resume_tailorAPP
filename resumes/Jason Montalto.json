@@ -1,0 +1,55 @@
+{
+  "name": "Jason montalto",
+  "email": "jason.montalto12@outlook.com",
+  "phone": "+1 464 250 3520",
+  "location": "Grand Rapids, MI, USA",
+  "linkedin": "https://www.linkedin.com/in/jasonmontalto/",
+  "website": "",
+
+  "experience": [
+    {
+      "company": "APFusion",
+      "title": "Senior Full Stack Engineer",
+      "location": "",
+      "start_date": "Apr 2022",
+      "end_date": "Present"
+    },
+    {
+      "company": "Applied Pathways LLC",
+      "title": "Principal Architect",
+      "location": "",
+      "start_date": "Oct 2014",
+      "end_date": "Nov 2022"
+    },
+    {
+      "company": "Trustwave",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "Jul 2012",
+      "end_date": "Apr 2015"
+    },
+    {
+      "company": "Band Digital Inc",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "Aug 2010",
+      "end_date": "Jul 2012"
+    },
+    {
+      "company": "Lime Green Entertainment",
+      "title": "Software Developer",
+      "location": "",
+      "start_date": "Aug 2009",
+      "end_date": "Aug 2010"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor’s Degree",
+      "school": "DePaul University",
+      "start_year": "",
+      "end_year": ""
+    }
+  ]
+}

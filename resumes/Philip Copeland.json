@@ -1,0 +1,40 @@
+{
+  "name": "Philip Copeland",
+  "email": "philip.copeland12@outlook.com",
+  "phone": "+1 (737) 244 0383",
+  "location": "Piedmont, SC, USA",
+  "linkedin": "https://www.linkedin.com/in/philip-copeland-84363945/",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "MetLife",
+      "title": "Senior Full Stack Engineer",
+      "location": "",
+      "start_date": "Feb 2015",
+      "end_date": "Present"
+    },
+    {
+      "company": "Concentrix",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "Dec 2014",
+      "end_date": "Feb 2015"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Master of Science – Computer Science",
+      "school": "Georgia Institute of Technology",
+      "start_year": "",
+      "end_year": ""
+    },
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "University of Illinois Springfield (UIS)",
+      "start_year": "",
+      "end_year": ""
+    }
+  ]
+}

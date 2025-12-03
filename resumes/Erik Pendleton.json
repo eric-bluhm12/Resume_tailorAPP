@@ -1,0 +1,48 @@
+{
+  "name": "Erik Pendleton",
+  "email": "erik.pendleton12@outlook.com",
+  "phone": "+1 (813) 694 3803",
+  "location": "Plainfield, VT, USA",
+  "linkedin": "https://www.linkedin.com/in/erik-pendleton/",
+  "website": "",
+
+  "experience": [
+    {
+      "company": "New Breed",
+      "title": "Senior Full Stack Engineer",
+      "location": "",
+      "start_date": "Apr 2020",
+      "end_date": "Present"
+    },
+    {
+      "company": "Vermont College of Fine Arts",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "Jan 2017",
+      "end_date": "Apr 2020"
+    },
+    {
+      "company": "Elani Learning",
+      "title": "Co-Founder",
+      "location": "",
+      "start_date": "Apr 2014",
+      "end_date": "Dec 2019"
+    },
+    {
+      "company": "Tutor Associates",
+      "title": "Technology Specialist",
+      "location": "",
+      "start_date": "May 2010",
+      "end_date": "Oct 2014"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor’s Degree in Computer Science",
+      "school": "VASSAR COLLEGE",
+      "start_year": "",
+      "end_year": ""
+    }
+  ]
+}

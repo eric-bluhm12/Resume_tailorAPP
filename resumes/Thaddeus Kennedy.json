@@ -1,0 +1,48 @@
+{
+  "name": "Thaddeus Kennedy",
+  "email": "thaddeus.kennedy12@outlook.com",
+  "phone": "+1 (464) 250 3520",
+  "location": "Seattle, WA, USA",
+  "linkedin": "https://www.linkedin.com/in/thaddeus-kennedy/",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "LaserAway",
+      "title": "Senior Full Stack Engineer",
+      "location": "",
+      "start_date": "Apr 2022",
+      "end_date": "Present"
+    },
+    {
+      "company": "coolblueweb",
+      "title": "Web Developer",
+      "location": "",
+      "start_date": "Aug 2015",
+      "end_date": "Mar 2022"
+    },
+    {
+      "company": "Imperial Computer Solutions",
+      "title": "Web Developer",
+      "location": "",
+      "start_date": "Feb 2013",
+      "end_date": "Aug 2015"
+    },
+    {
+      "company": "CU*Answers",
+      "title": "Web Services Intern",
+      "location": "",
+      "start_date": "Jul 2012",
+      "end_date": "Dec 2012"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Associate Degree: Music & Web Development (dual focus)",
+      "school": "Grand Rapids Community College",
+      "start_year": "2010",
+      "end_year": "2013"
+    }
+  ]
+}

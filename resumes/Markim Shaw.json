@@ -1,0 +1,55 @@
+{
+  "name": "Markim Shaw",
+  "email": "markim.shaw12@outlook.com",
+  "phone": "+1 409 916 8032",
+  "location": "Richardson, TX, USA",
+  "linkedin": "https://www.linkedin.com/in/mshaw24/",
+  "website": "",
+
+  "experience": [
+    {
+      "company": "Heartland",
+      "title": "Senior Software Mobile Engineer",
+      "location": "",
+      "start_date": "Apr 2021",
+      "end_date": "Present"
+    },
+    {
+      "company": "A Cloud Guru",
+      "title": "Mobile Engineer",
+      "location": "",
+      "start_date": "Jan 2020",
+      "end_date": "Apr 2021"
+    },
+    {
+      "company": "Linux Academy",
+      "title": "iOS Developer",
+      "location": "",
+      "start_date": "Mar 2018",
+      "end_date": "Jan 2020"
+    },
+    {
+      "company": "Wieck",
+      "title": "Intern & iOS/tvOS Independent Contractor",
+      "location": "Remote",
+      "start_date": "Nov 2016",
+      "end_date": "Jun 2017"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "school": "The University of Texas at Dallas",
+      "start_year": "",
+      "end_year": ""
+    },
+    {
+      "degree": "Associate of Science",
+      "school": "Richland College",
+      "start_year": "",
+      "end_year": ""
+    }
+    
+  ]
+}

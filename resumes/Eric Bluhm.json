@@ -1,0 +1,48 @@
+{
+  "name": "Eric Bluhm",
+  "email": "eric.bluhm12@outlook.com",
+  "phone": "+1 464 250 3520",
+  "location": "Greater Chicago Area, Illinois, United States",
+  "linkedin": "",
+  "website": "",
+
+  "experience": [
+    {
+      "company": "Snapsheet Inc",
+      "title": "Senior Software Engineer & Manager",
+      "location": "",
+      "start_date": "May 2022",
+      "end_date": "Present"
+    },
+    {
+      "company": "Perficient",
+      "title": "Senior Solutions Architect | Senior Full Stack Engineer",
+      "location": "",
+      "start_date": "Sep 2018",
+      "end_date": "Apr 2022"
+    },
+    {
+      "company": "Perficient",
+      "title": "Solutions Architect | Full Stack Engineer",
+      "location": "",
+      "start_date": "Jun 2017",
+      "end_date": "Sep 2018"
+    },
+    {
+      "company": "Clarity Consulting",
+      "title": "Senior Consultant",
+      "location": "Remote",
+      "start_date": "Sep 2012",
+      "end_date": "Jun 2017"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor of Science: Mathematics and Computer Science",
+      "school": "University of Illinois Urbana-Champaign",
+      "start_year": "",
+      "end_year": ""
+    }
+  ]
+}

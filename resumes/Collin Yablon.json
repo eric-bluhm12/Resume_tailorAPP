@@ -1,0 +1,55 @@
+{
+  "name": "Collin Yablon",
+  "email": "collin.yablon12@outlook.com",
+  "phone": "+1 (409) 916 8032",
+  "location": "Denver, Colorado, United States of America",
+  "linkedin": "https://www.linkedin.com/in/collinyablon/",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "ProtecWise Inc",
+      "title": "Senior Full Stack Engineer",
+      "location": "",
+      "start_date": "Jan 2020",
+      "end_date": "Present"
+    },
+    {
+      "company": "Hotel Engine",
+      "title": "Senior Platform Engineer",
+      "location": "",
+      "start_date": "May 2019",
+      "end_date": "Jan 2020"
+    },
+    {
+      "company": "Travelers Haven",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "Nov 2018",
+      "end_date": "May 2019"
+    },
+    {
+      "company": "ProtectWise",
+      "title": "API Engineer",
+      "location": "",
+      "start_date": "Apr 2016",
+      "end_date": "Nov 2018"
+    },
+    {
+      "company": "FoodServiceWarehouse.com",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "May 2011",
+      "end_date": "Apr 2016"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science",
+      "school": "Metropolitan State University of Denver",
+      "start_year": "",
+      "end_year": ""
+    }
+  ]
+}
