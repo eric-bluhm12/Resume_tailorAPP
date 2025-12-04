@@ -1,10 +1,3 @@
-// Force dynamic rendering for 404 page
-export function getServerSideProps() {
-  return {
-    props: {},
-  };
-}
-
 export default function Custom404() {
   return (
     <div style={{

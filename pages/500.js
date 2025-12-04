@@ -1,10 +1,3 @@
-// Force dynamic rendering for 500 page
-export function getServerSideProps() {
-  return {
-    props: {},
-  };
-}
-
 export default function Custom500() {
   return (
     <div style={{
