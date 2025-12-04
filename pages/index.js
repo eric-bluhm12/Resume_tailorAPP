@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 
+// Force dynamic rendering - disable static optimization
+export function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
+
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
   const [selectedProfile, setSelectedProfile] = useState("");
