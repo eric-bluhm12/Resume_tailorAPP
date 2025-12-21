@@ -1,12 +1,5 @@
 import { useState } from "react";
 
-// Force dynamic rendering - disable static optimization
-export function getServerSideProps() {
-  return {
-    props: {},
-  };
-}
-
 export default function ParseResume() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);

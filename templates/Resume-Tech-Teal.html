@@ -5,6 +5,18 @@
     <title>{{name}} — Resume</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      :root {
+        --primary: #3d6b6b;
+        --primary-dark: #2d5454;
+        --accent: #5a8a8a;
+        --accent-light: #8ab4b4;
+        --text-dark: #2d3a3a;
+        --text-medium: #4a5c5c;
+        --text-light: #6a7e7e;
+        --bg: #ffffff;
+        --code-bg: #f5f8f8;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -12,47 +24,54 @@
       }
 
       body {
-        font-family: "Cambria", "Georgia", serif;
+        font-family: "Segoe UI", "Roboto", sans-serif;
         font-size: 10.5pt;
-        line-height: 1.35;
-        color: #2d2d2d;
-        background: #ffffff;
+        line-height: 1.4;
+        color: var(--text-dark);
+        background: var(--bg);
         max-width: 8.5in;
       }
 
       /* Header */
       header {
-        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-left: 3px solid var(--primary);
+        padding-left: 12px;
         margin-bottom: 14px;
-        padding-bottom: 10px;
-        margin-top: -17mm;
+        margin-top: -10mm;
       }
 
-      header h1 {
-        font-size: 26pt;
-        font-weight: bold;
-        margin-bottom: 3px;
-        margin-top: 3px;
-        color: #2d2d2d;
-        letter-spacing: 1pt;
+      .header-left h1 {
+        font-size: 24pt;
+        font-weight: 700;
+        color: var(--text-dark);
+        letter-spacing: -0.5pt;
+        margin-bottom: 2px;
       }
 
-      header .title {
-        font-size: 12pt;
-        font-weight: normal;
-        margin-bottom: 6px;
-        color: #505050;
+      .header-left .title {
+        font-size: 11pt;
+        font-weight: 500;
+        color: var(--primary);
+        margin-bottom: 4px;
       }
 
       .contact {
-        font-size: 9.5pt;
-        color: #505050;
-        line-height: 1.4;
+        text-align: right;
+        font-size: 9pt;
+        color: var(--text-medium);
+        line-height: 1.6;
       }
 
       .contact a {
-        color: #505050;
+        color: var(--primary);
         text-decoration: none;
+      }
+
+      .contact div {
+        margin-bottom: 1px;
       }
 
       /* Section Headers */
@@ -61,22 +80,25 @@
       }
 
       section h2 {
-        font-size: 11pt;
-        font-weight: bold;
+        font-size: 10.5pt;
+        font-weight: 700;
         text-transform: uppercase;
-        color: #3d3d3d;
-        border-bottom: 1px solid #4a4a4a;
-        padding-bottom: 2px;
+        color: var(--bg);
+        background: var(--primary);
+        padding: 4px 10px;
         margin-bottom: 8px;
         letter-spacing: 1pt;
+        display: inline-block;
       }
 
       /* Summary */
       .summary {
         font-size: 10pt;
-        line-height: 1.45;
-        text-align: left;
-        color: #3d3d3d;
+        line-height: 1.5;
+        color: var(--text-medium);
+        padding: 8px 12px;
+        background: var(--code-bg);
+        border-left: 3px solid var(--accent);
       }
 
       /* Skills */
@@ -88,18 +110,20 @@
       .skills-category strong {
         font-size: 10pt;
         font-weight: bold;
-        color: #3d3d3d;
+        color: var(--primary-dark);
         display: inline-block;
       }
 
       .skills-list {
         font-size: 10pt;
-        color: #3d3d3d;
+        color: var(--text-dark);
       }
 
       /* Experience */
       .exp-item {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+        padding-left: 10px;
+        border-left: 2px solid var(--accent-light);
       }
 
       .exp-header {
@@ -111,42 +135,49 @@
 
       .exp-title {
         font-size: 10.5pt;
-        font-weight: bold;
-        color: #2d2d2d;
+        font-weight: 700;
+        color: var(--text-dark);
       }
 
       .exp-dates {
-        font-size: 9.5pt;
-        color: #505050;
-        font-weight: normal;
-        white-space: nowrap;
-        margin-left: 10px;
+        font-size: 9pt;
+        color: var(--primary);
+        font-weight: 600;
+        font-family: "Consolas", "Courier New", monospace;
       }
 
       .exp-company {
         font-size: 10pt;
-        font-style: italic;
-        margin-bottom: 3px;
-        color: #505050;
+        color: var(--text-medium);
+        margin-bottom: 4px;
+      }
+
+      .exp-company strong {
+        font-weight: 600;
+        color: var(--text-dark);
       }
 
       .exp-details {
-        margin-left: 16px;
-        margin-top: 3px;
+        margin-left: 14px;
         padding-left: 0;
       }
 
       .exp-details li {
         font-size: 10pt;
-        line-height: 1.35;
+        line-height: 1.4;
         margin-bottom: 2px;
-        text-align: left;
-        color: #3d3d3d;
+        color: var(--text-dark);
+      }
+
+      .exp-details li::marker {
+        color: var(--accent);
       }
 
       /* Education */
       .edu-item {
         margin-bottom: 6px;
+        padding-left: 10px;
+        border-left: 2px solid var(--accent-light);
       }
 
       .edu-header {
@@ -157,26 +188,25 @@
 
       .edu-degree {
         font-size: 10.5pt;
-        font-weight: bold;
-        color: #2d2d2d;
+        font-weight: 600;
+        color: var(--text-dark);
       }
 
       .edu-dates {
-        font-size: 9.5pt;
-        color: #505050;
-        white-space: nowrap;
+        font-size: 9pt;
+        color: var(--primary);
+        font-family: "Consolas", "Courier New", monospace;
       }
 
       .edu-school {
         font-size: 10pt;
-        color: #505050;
-        font-style: italic;
+        color: var(--text-medium);
       }
 
-      /* Print optimization */
+      /* Print */
       @media print {
         body {
-          padding: 0.5in 0.65in;
+          padding: 0.5in 0.6in;
         }
       }
 
@@ -188,11 +218,15 @@
 
   <body>
     <header>
-      <h1>{{name}}</h1>
-      <div class="title">{{title}}</div>
+      <div class="header-left">
+        <h1>{{name}}</h1>
+        <div class="title">{{title}}</div>
+      </div>
       <div class="contact">
-        {{email}}{{#if phone}} • {{phone}}{{/if}} • {{location}}
-        {{#if linkedin}} • {{linkedin}}{{/if}}
+        <div>{{email}}</div>
+        {{#if phone}}<div>{{phone}}</div>{{/if}}
+        <div>{{location}}</div>
+        {{#if linkedin}}<div>{{linkedin}}</div>{{/if}}
       </div>
     </header>
 
@@ -225,7 +259,7 @@
           <div class="exp-dates">{{start_date}} – {{end_date}}</div>
         </div>
         <div class="exp-company">
-          {{company}}{{#if location}}, {{location}}{{/if}}
+          <strong>{{company}}</strong>{{#if location}}, {{location}}{{/if}}
         </div>
         {{#if details}}
         <ul class="exp-details">

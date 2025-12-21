@@ -5,6 +5,17 @@
     <title>{{name}} — Resume</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      :root {
+        --primary: #4a5568;
+        --primary-light: #718096;
+        --accent: #a0aec0;
+        --text-dark: #2d3748;
+        --text-medium: #4a5568;
+        --text-light: #718096;
+        --bg: #ffffff;
+        --bg-subtle: #f7fafc;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -14,45 +25,50 @@
       body {
         font-family: "Cambria", "Georgia", serif;
         font-size: 10.5pt;
-        line-height: 1.35;
-        color: #2d2d2d;
-        background: #ffffff;
+        line-height: 1.4;
+        color: var(--text-dark);
+        background: var(--bg);
         max-width: 8.5in;
       }
 
       /* Header */
       header {
         text-align: center;
+        padding-bottom: 12px;
         margin-bottom: 14px;
-        padding-bottom: 10px;
-        margin-top: -17mm;
+        margin-top: -15mm;
       }
 
       header h1 {
-        font-size: 26pt;
-        font-weight: bold;
-        margin-bottom: 3px;
-        margin-top: 3px;
-        color: #2d2d2d;
+        font-size: 24pt;
+        font-weight: 700;
+        color: var(--primary);
         letter-spacing: 1pt;
+        margin-bottom: 3px;
       }
 
       header .title {
-        font-size: 12pt;
-        font-weight: normal;
-        margin-bottom: 6px;
-        color: #505050;
+        font-size: 11pt;
+        font-weight: 400;
+        color: var(--text-medium);
+        font-style: italic;
+        margin-bottom: 8px;
       }
 
       .contact {
-        font-size: 9.5pt;
-        color: #505050;
-        line-height: 1.4;
+        font-size: 9pt;
+        color: var(--text-light);
+        font-family: "Calibri", sans-serif;
       }
 
       .contact a {
-        color: #505050;
+        color: var(--primary-light);
         text-decoration: none;
+      }
+
+      .contact-divider {
+        color: var(--accent);
+        margin: 0 6px;
       }
 
       /* Section Headers */
@@ -61,22 +77,25 @@
       }
 
       section h2 {
-        font-size: 11pt;
-        font-weight: bold;
+        font-size: 10.5pt;
+        font-weight: 700;
         text-transform: uppercase;
-        color: #3d3d3d;
-        border-bottom: 1px solid #4a4a4a;
-        padding-bottom: 2px;
+        color: var(--primary);
+        letter-spacing: 1.5pt;
         margin-bottom: 8px;
-        letter-spacing: 1pt;
+        padding-bottom: 3px;
+        border-bottom: 1px solid var(--accent);
       }
 
       /* Summary */
       .summary {
         font-size: 10pt;
-        line-height: 1.45;
-        text-align: left;
-        color: #3d3d3d;
+        line-height: 1.5;
+        color: var(--text-medium);
+        text-align: justify;
+        background: var(--bg-subtle);
+        padding: 10px 12px;
+        border-left: 3px solid var(--accent);
       }
 
       /* Skills */
@@ -88,18 +107,18 @@
       .skills-category strong {
         font-size: 10pt;
         font-weight: bold;
-        color: #3d3d3d;
+        color: var(--primary);
         display: inline-block;
       }
 
       .skills-list {
         font-size: 10pt;
-        color: #3d3d3d;
+        color: var(--text-dark);
       }
 
       /* Experience */
       .exp-item {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
       }
 
       .exp-header {
@@ -111,42 +130,48 @@
 
       .exp-title {
         font-size: 10.5pt;
-        font-weight: bold;
-        color: #2d2d2d;
+        font-weight: 700;
+        color: var(--text-dark);
+        font-family: "Calibri", sans-serif;
       }
 
       .exp-dates {
-        font-size: 9.5pt;
-        color: #505050;
-        font-weight: normal;
-        white-space: nowrap;
-        margin-left: 10px;
+        font-size: 9pt;
+        color: var(--primary-light);
+        font-family: "Calibri", sans-serif;
+        font-style: italic;
       }
 
       .exp-company {
         font-size: 10pt;
         font-style: italic;
-        margin-bottom: 3px;
-        color: #505050;
+        color: var(--text-medium);
+        margin-bottom: 4px;
       }
 
       .exp-details {
         margin-left: 16px;
-        margin-top: 3px;
         padding-left: 0;
+        font-family: "Calibri", sans-serif;
       }
 
       .exp-details li {
         font-size: 10pt;
-        line-height: 1.35;
+        line-height: 1.4;
         margin-bottom: 2px;
-        text-align: left;
-        color: #3d3d3d;
+        color: var(--text-dark);
+      }
+
+      .exp-details li::marker {
+        color: var(--accent);
       }
 
       /* Education */
       .edu-item {
-        margin-bottom: 6px;
+        margin-bottom: 8px;
+        padding: 8px 12px;
+        background: var(--bg-subtle);
+        border-left: 3px solid var(--accent);
       }
 
       .edu-header {
@@ -157,26 +182,27 @@
 
       .edu-degree {
         font-size: 10.5pt;
-        font-weight: bold;
-        color: #2d2d2d;
+        font-weight: 700;
+        color: var(--text-dark);
+        font-family: "Calibri", sans-serif;
       }
 
       .edu-dates {
-        font-size: 9.5pt;
-        color: #505050;
-        white-space: nowrap;
+        font-size: 9pt;
+        color: var(--primary-light);
+        font-style: italic;
       }
 
       .edu-school {
         font-size: 10pt;
-        color: #505050;
+        color: var(--text-medium);
         font-style: italic;
       }
 
-      /* Print optimization */
+      /* Print */
       @media print {
         body {
-          padding: 0.5in 0.65in;
+          padding: 0.5in 0.6in;
         }
       }
 
@@ -191,21 +217,23 @@
       <h1>{{name}}</h1>
       <div class="title">{{title}}</div>
       <div class="contact">
-        {{email}}{{#if phone}} • {{phone}}{{/if}} • {{location}}
-        {{#if linkedin}} • {{linkedin}}{{/if}}
+        {{email}}<span class="contact-divider">|</span>
+        {{#if phone}}{{phone}}<span class="contact-divider">|</span>{{/if}}
+        {{location}}
+        {{#if linkedin}}<span class="contact-divider">|</span>{{linkedin}}{{/if}}
       </div>
     </header>
 
     {{#if summary}}
     <section>
-      <h2>Summary</h2>
+      <h2>Professional Summary</h2>
       <p class="summary">{{{summary}}}</p>
     </section>
     {{/if}}
 
     {{#if skills}}
     <section>
-      <h2>Technical Skills</h2>
+      <h2>Areas of Expertise</h2>
       {{#each skills}}
       <div class="skills-category">
         <strong>{{formatKey @key}}:</strong>
@@ -217,7 +245,7 @@
 
     {{#if experience}}
     <section>
-      <h2>Experience</h2>
+      <h2>Professional Experience</h2>
       {{#each experience}}
       <div class="exp-item">
         <div class="exp-header">
@@ -241,7 +269,7 @@
 
     {{#if education}}
     <section>
-      <h2>Education</h2>
+      <h2>Education & Credentials</h2>
       {{#each education}}
       <div class="edu-item">
         <div class="edu-header">

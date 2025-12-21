@@ -8,43 +8,46 @@ import Handlebars from "handlebars";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-// Call Anthropic with timeout & retries
-async function callAnthropic(messages, model = null, maxTokens = 16384, retries = 2, timeoutMs = 120000) {
+// Call Claude with timeout & retries
+async function callClaude(promptOrMessages, model = null, maxTokens = 8000, retries = 2, timeoutMs = 120000) {
   while (retries > 0) {
     try {
-      // Anthropic expects messages array with system and user messages
-      // Extract system message if present
-      let systemMessage = "";
-      let userMessages = [];
+      // Handle both string prompts and message arrays
+      let messages;
+      let systemPrompt = null;
       
-      if (Array.isArray(messages)) {
-        messages.forEach(msg => {
-          if (msg.role === "system") {
-            systemMessage = msg.content;
-          } else if (msg.role === "user") {
-            userMessages.push({ role: "user", content: msg.content });
-          }
-        });
-      } else if (typeof messages === 'string') {
-        userMessages = [{ role: "user", content: messages }];
+      if (typeof promptOrMessages === 'string') {
+        messages = [{ role: "user", content: promptOrMessages }];
+      } else if (Array.isArray(promptOrMessages)) {
+        // Extract system message if present (Claude supports it natively)
+        const systemMsg = promptOrMessages.find(msg => msg.role === 'system');
+        if (systemMsg) {
+          systemPrompt = systemMsg.content;
+        }
+        // Convert other messages to Claude format
+        messages = promptOrMessages
+          .filter(msg => msg.role !== 'system')
+          .map(msg => ({ role: msg.role, content: msg.content }));
+      } else {
+        messages = [{ role: "user", content: String(promptOrMessages) }];
       }
 
       const apiParams = {
-        model: model || process.env.ANTHROPIC_MODEL || "claude-3-5-haiku-20241022",
+        model: model || process.env.ANTHROPIC_MODEL || "claude-3-5-sonnet-20241022",
         max_tokens: maxTokens,
-        temperature: 1,
-        messages: userMessages
+        temperature: 0.7,
+        messages: messages
       };
-
-      // Only include system parameter if we have a system message
-      if (systemMessage) {
-        apiParams.system = systemMessage;
+      
+      // Add system prompt if present
+      if (systemPrompt) {
+        apiParams.system = systemPrompt;
       }
 
       return await Promise.race([
         anthropic.messages.create(apiParams),
         new Promise((_, reject) =>
-          setTimeout(() => reject(new Error("Anthropic request timed out")), timeoutMs)
+          setTimeout(() => reject(new Error("Claude request timed out")), timeoutMs)
         )
       ]);
     } catch (err) {
@@ -55,105 +58,17 @@ async function callAnthropic(messages, model = null, maxTokens = 16384, retries 
   }
 }
 
-
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).send("Method not allowed");
 
   try {
-    const { profile, jd } = req.body;
+    const { profile, jd, template, jobTitle, companyName } = req.body;
 
     if (!profile) return res.status(400).send("Profile required");
     if (!jd) return res.status(400).send("Job description required");
-
-    // Check if job is remote or hybrid/onsite
-    console.log("Checking job location type...");
-    const jdLower = jd.toLowerCase();
     
-    // Keywords indicating hybrid or onsite positions
-    const hybridKeywords = [
-      'hybrid', 'hybrid work', 'hybrid model', 'hybrid schedule',
-      'days in office', 'days per week in office', 'in-office days',
-      'office presence', 'some days in office'
-    ];
-    
-    const onsiteKeywords = [
-      'on-site', 'onsite', 'on site', 'in-office', 'in office',
-      'office based', 'office-based', 'must be located in',
-      'must be based in', 'must relocate', 'relocation required',
-      'physical presence required', 'in person', 'local candidates',
-      'candidates must be in', 'candidates must reside'
-    ];
-    
-    // Check for hybrid indicators
-    const isHybrid = hybridKeywords.some(keyword => jdLower.includes(keyword));
-    
-    // Check for onsite indicators (but exclude if "remote" is also mentioned strongly)
-    const hasOnsiteKeywords = onsiteKeywords.some(keyword => jdLower.includes(keyword));
-    const hasRemoteKeywords = jdLower.includes('remote') || jdLower.includes('work from home') || 
-                               jdLower.includes('fully remote') || jdLower.includes('100% remote') ||
-                               jdLower.includes('remote-first') || jdLower.includes('distributed team');
-    const hasJuniorKeywords = jdLower.includes('junior role') || jdLower.includes('entry level') ||
-                               jdLower.includes('entry-level');
-    
-    const hasInternKeywords = jdLower.includes(' intern ') || jdLower.includes('internship');
-
-    const isJunior = hasJuniorKeywords && !hasInternKeywords;
-    const isIntern = hasInternKeywords && !hasJuniorKeywords;
-    const isEntryLevel = isJunior || isIntern;
-
-    // Determine if it's truly onsite (has onsite keywords but not strong remote indicators)
-    const isOnsite = hasOnsiteKeywords && !hasRemoteKeywords;
-    
-    if (isHybrid) {
-      console.log("❌ Job is HYBRID - Rejecting");
-      return res.status(400).json({ 
-        error: "This position is HYBRID (requires some office days). This tool is designed for REMOTE-ONLY positions. Please provide a fully remote job description.",
-        locationType: "hybrid"
-      });
-    }
-    
-    if (isOnsite) {
-      console.log("❌ Job is ONSITE - Rejecting");
-      return res.status(400).json({ 
-        error: "This position is ONSITE/IN-PERSON. This tool is designed for REMOTE-ONLY positions. Please provide a fully remote job description.",
-        locationType: "onsite"
-      });
-    }
-
-    if (isEntryLevel) {
-      console.log("❌ Job is ENTRY LEVEL - Rejecting");
-      return res.status(400).json({ 
-        error: "This position is ENTRY LEVEL. This tool is designed for MID-LEVEL and SENIOR positions. Please provide a more senior job description.",
-        locationType: "entry-level"
-      });
-    }
-    
-    // Check for security clearance requirements
-    console.log("Checking for security clearance requirements...");
-    const clearanceKeywords = [
-      'security clearance', 'clearance required', 'must have clearance', 'active clearance',
-      'public trust', 'public-trust', 'secret clearance', 'top secret', 'top-secret',
-      'ts/sci', 'ts clearance', 'secret/ts', 'confidential clearance',
-      'dod clearance', 'government clearance', 'federal clearance',
-      'clearance eligible', 'ability to obtain clearance', 'obtain security clearance',
-      'maintain clearance', 'possess clearance', 'hold clearance',
-      'interim clearance', 'final clearance', 'adjudicated clearance',
-      'naci', 'naclc', 'tier 1', 'tier 2', 'tier 3', 'tier 4', 'tier 5',
-      'background investigation', 'suitability determination',
-      'ci poly', 'polygraph', 'lifestyle polygraph', 'counterintelligence polygraph'
-    ];
-    
-    const requiresClearance = clearanceKeywords.some(keyword => jdLower.includes(keyword));
-    
-    if (requiresClearance) {
-      console.log("❌ Job requires SECURITY CLEARANCE - Rejecting");
-      return res.status(400).json({ 
-        error: "This position requires SECURITY CLEARANCE (including Public Trust or higher). This tool is designed for positions that do NOT require any level of security clearance.",
-        locationType: "clearance-required"
-      });
-    }
-    
-    console.log("✅ Job appears to be REMOTE and no clearance required - Proceeding");
+    // Default to Resume.html if no template specified
+    const templateName = template || "Resume";
 
     // Load profile JSON
     console.log(`Loading profile: ${profile}`);
@@ -185,18 +100,20 @@ export default async function handler(req, res) {
     };
 
     const yearsOfExperience = calculateYears(profileData.experience);
-    const yearsDisplay = yearsOfExperience > 10 ? "10+" : yearsOfExperience.toString();
 
-    // SYSTEM MESSAGE: Static content (cacheable) - Instructions + Profile Data
-    const systemMessage = `You are a world-class ATS optimization expert. Create a resume that scores 95-100% on ATS.
+    // AI PROMPT: Generate ATS-optimized resume content as JSON
+    const prompt = `You are a world-class ATS optimization expert. Create a resume that scores 95-100% on ATS.
 
 **🚨 CRITICAL OUTPUT: Return ONLY valid JSON. No markdown, explanations, or extra text.**
-Format: {"company":"...","jobTitle":"...","title":"...","summary":"...","skills":{...},"experience":[...]}
+Format: {"title":"...","summary":"...","skills":{...},"experience":[...]}
 
-## CANDIDATE PROFILE:
-**Name:** ${profileData.name}
+***Wrap ONLY the first occurrence of critical JD keywords within each section using <strong> tags. Do NOT wrap metrics, verbs, or filler terms.***
+
+
+## PROFILE DATA:
+**Candidate:** ${profileData.name}
 **Contact:** ${profileData.email} | ${profileData.phone} | ${profileData.location}
-**Years of Experience:** ${yearsDisplay} years
+**Experience:** ${yearsOfExperience} years
 
 **WORK HISTORY:**
 ${profileData.experience.map((job, idx) => {
@@ -208,20 +125,22 @@ ${profileData.experience.map((job, idx) => {
 }).join('\n')}
 
 **EDUCATION:**
-${profileData.education.map(edu => `- ${edu.degree}, ${edu.school} (${edu.start_year}-${edu.end_year})`).join('\n')}
+${profileData.education.map(edu => {
+  let eduStr = `- ${edu.degree}, ${edu.school} (${edu.start_year}-${edu.end_year})`;
+  if (edu.grade) eduStr += ` | GPA: ${edu.grade}`;
+  return eduStr;
+}).join('\n')}
 
 ---
 
-## RESUME GENERATION INSTRUCTIONS:
+## JOB DESCRIPTION:
+${jd}
 
-### **TASK:**
-You will receive a job description. Extract the company name and job title, then generate an ATS-optimized resume tailored to that specific job.
+---
 
-### **1. EXTRACT COMPANY & JOB TITLE**
-- Extract company name from JD (if not found, use "")
-- Extract job title from JD (if not found, use "Software Engineer")
+## INSTRUCTIONS:
 
-### **2. EXTRACT DOMAIN KEYWORDS** (Critical for 95%+ score)
+### **1. EXTRACT DOMAIN KEYWORDS** (Critical for 98%+ score)
 
 Analyze JD "About Us" section for **10-15 domain/compliance keywords** specific to company's product/industry:
 
@@ -234,16 +153,20 @@ Analyze JD "About Us" section for **10-15 domain/compliance keywords** specific 
 **WHERE TO USE:**
 - Summary: 3-5 domain keywords (lines 2-4)
 - Skills: Dedicated domain category with 10-15 keywords
-- Experience: 2-3 bullets MUST include domain keywords
+- Experience: Each role must include 2–3 bullets total that naturally incorporate domain or compliance keywords.
 
-### **3. TITLE**
+---
+
+### **2. TITLE**
 - Use EXACT job title from JD
 - Examples: "Senior Data Scientist", "Senior Full Stack Engineer", "DevOps Engineer"
 
-### **4. SUMMARY** (5-6 lines, 8-12 JD keywords + 3-5 domain keywords)
+---
+
+### **3. SUMMARY** (5-6 lines, 8-12 JD keywords + 3-5 domain keywords)
 
 **Structure:**
-- **Line 1:** [JD Title] with ${yearsDisplay}+ years in [domain from JD] across startup and enterprise environments
+- **Line 1:** [JD Title] with ${yearsOfExperience}+ years in [domain from JD] across startup and enterprise environments
 - **Line 2:** Expertise in [domain keyword] + [3-4 EXACT JD technologies WITH versions if specified]
 - **Line 3:** Proven track record in [domain keyword] + [key achievement with metric: %, $, time, scale]
 - **Line 4:** Proficient in [3-4 more JD technologies/methodologies]
@@ -253,7 +176,9 @@ Analyze JD "About Us" section for **10-15 domain/compliance keywords** specific 
 **Example (FinTech):**
 "Senior Full Stack Engineer with 8+ years building scalable fintech platforms. Expertise in **payment processing systems**, **PCI-DSS compliance**, React.js 18, Node.js 20, and PostgreSQL. Proven track record implementing **fraud detection algorithms** that reduced chargebacks by 40% and processed $500M+ annually. Proficient in AWS infrastructure, Docker, Kubernetes, and **KYC/AML compliance frameworks**. Collaborative problem-solver with experience leading cross-functional teams in fast-paced startup environments. Strong focus on secure payment infrastructure, regulatory compliance, and delivering high-performance financial applications."
 
-### **5. SKILLS** (60-80 total, 5-8 categories)
+---
+
+### **4. SKILLS** (60–75 total skills across 6–7 categories, prioritizing JD keywords over breadth.)
 
 **Rules:**
 - Create categories based on JD focus (Frontend, Backend, Cloud, DevOps, Security, etc.)
@@ -265,18 +190,18 @@ Analyze JD "About Us" section for **10-15 domain/compliance keywords** specific 
 - 70% JD keywords + 30% complementary skills
 
 **Example (Full Stack Engineer):**
-{
-  "skills": {
-    "Frontend": ["React.js", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Redux", "Vue.js", "HTML5", "CSS3"],
-    "Backend": ["Node.js", "Express.js", "Python", "Django", "FastAPI", "GraphQL", "REST APIs"],
-    "Databases": ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Elasticsearch"],
-    "Cloud & Infrastructure": ["AWS (Lambda, S3, EC2, RDS, CloudFront)", "Docker", "Kubernetes", "Terraform"],
-    "DevOps & CI/CD": ["GitLab CI/CD", "GitHub Actions", "Jenkins", "Datadog", "Prometheus"],
-    "Testing": ["Jest", "Cypress", "Playwright", "React Testing Library"],
-    "Payment & Compliance": ["PCI-DSS", "Payment processing", "Stripe", "Fraud detection", "KYC/AML", "SOC 2"],
-    "Tools": ["Git", "Webpack", "Vite", "Figma", "Jira"]
-  }
+\`\`\`json
+"skills": {
+  "Frontend": ["React.js", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Redux", "Vue.js", "HTML5", "CSS3"],
+  "Backend": ["Node.js", "Express.js", "Python", "Django", "FastAPI", "GraphQL", "REST APIs"],
+  "Databases": ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Elasticsearch"],
+  "Cloud & Infrastructure": ["AWS (Lambda, S3, EC2, RDS, CloudFront)", "Docker", "Kubernetes", "Terraform"],
+  "DevOps & CI/CD": ["GitLab CI/CD", "GitHub Actions", "Jenkins", "Datadog", "Prometheus"],
+  "Testing": ["Jest", "Cypress", "Playwright", "React Testing Library"],
+  "Payment & Compliance": ["PCI-DSS", "Payment processing", "Stripe", "Fraud detection", "KYC/AML", "SOC 2"],
+  "Tools": ["Git", "Webpack", "Vite", "Figma", "Jira"]
 }
+\`\`\`
 Total: ~70 skills (scannable and professional)
 
 **If relevant, create domain-specific category:**
@@ -285,15 +210,20 @@ Total: ~70 skills (scannable and professional)
 - Security → "Security & Identity"
 - Data → "Data Governance & Compliance"
 
-### **6. EXPERIENCE** (${profileData.experience.length} entries, 6-8 bullets each)
+---
+
+### **5. EXPERIENCE** (${profileData.experience.length} entries, 6-8 bullets each)
 
 **Requirements:**
-- Generate ${profileData.experience.length} job entries matching work history above
+- Generate ${profileData.experience.length} job entries matching work history
 - 6-8 bullets per job (most recent jobs get 8, older jobs 5-6)
-- 25-35 words per bullet
+- 20–40 words per bullet, optimized for clarity and natural senior-engineer tone.
+- For each work experience, ensure all technologies listed were widely available and commonly used in production during that role’s time period; do not include tools, frameworks, or practices released after the role ended or unlikely to have been adopted in that era.
 - Include 2-4 JD keywords per bullet
 - EVERY bullet needs a metric (%, $, time, scale, users)
+- Metrics have to be approximate. Use ranges or natural phrasing (e.g., ‘~40%’, ‘significant reduction’, ‘hundreds of thousands of users’) when precise figures may feel unnatural. Ensure at least 50–60% of bullets include a metric, while the remainder focus on scope, ownership, or architectural impact.
 - Add industry context to 2-3 bullets per job
+- Prioritize JD keywords by frequency in the following order: Job Title > Core Technologies > Domain Compliance > Soft Skills.
 
 **Bullet Structure:**
 [Action Verb] + [JD Technology] + [what you built] + [business impact] + [metric]
@@ -308,16 +238,11 @@ Total: ~70 skills (scannable and professional)
 - Salesforce → "for B2B SaaS customers"
 - If unknown → use JD company's industry or default to "SaaS platform"
 
-**Metrics Examples:**
-- Performance: "40% faster", "reduced latency by 200ms", "3x throughput"
-- Scale: "50K+ users", "10M+ records", "1000+ requests/sec"
-- Cost: "saved $500K annually", "reduced AWS costs by 35%"
-- Time: "deployment from 2hrs to 15min", "accelerated dev by 40%"
-- Quality: "99.9% uptime", "reduced bugs by 50%", "90% code coverage"
-- Team: "mentored 5 developers", "led team of 10"
 
 **Example Bullet (with domain keywords):**
 "Architected **secure payment processing system** using **PCI-DSS compliant** infrastructure with Node.js 20, PostgreSQL, and Redis, implementing **fraud detection algorithms** and **tokenization** that processed $500M+ annually while reducing chargebacks by 40% and maintaining 99.99% uptime for 2M+ users."
+
+---
 
 ## **🎯 ATS OPTIMIZATION CHECKLIST:**
 
@@ -335,68 +260,33 @@ Total: ~70 skills (scannable and professional)
 - Strong metrics in every bullet
 - Domain keywords integrated naturally
 
-**OUTPUT FORMAT:**
-Return ONLY valid JSON with this exact structure:
-{
-  "company": "Extracted Company Name",
-  "jobTitle": "Extracted Job Title",
-  "title": "...",
-  "summary": "...",
-  "skills": {"Category": ["Skill1", "Skill2"]},
-  "experience": [{"title": "...", "details": ["bullet1", "bullet2"]}]
-}`;
+---
 
-    // USER MESSAGE: Dynamic content (job description)
-    const userMessage = `Generate an ATS-optimized resume for the following job description:
+Return ONLY valid JSON: {"title":"...","summary":"...","skills":{"Category":["Skill1","Skill2"]},"experience":[{"title":"...","details":["bullet1","bullet2"]}]}
+`;
 
-${jd}
-
-Remember: Extract company name and job title, then create the tailored resume following all instructions above. Return ONLY valid JSON.`;
-
-    // Call Anthropic with message array
-    const messages = [
-      { role: "system", content: systemMessage },
-      { role: "user", content: userMessage }
-    ];
-
-    console.log("🤖 Calling Anthropic Claude Haiku 4.5...");
-    const aiResponse = await callAnthropic(messages);
-    
-    // Store token usage for response headers
-    const tokenUsage = {
-      promptTokens: aiResponse.usage?.input_tokens || 0,
-      completionTokens: aiResponse.usage?.output_tokens || 0,
-      totalTokens: (aiResponse.usage?.input_tokens || 0) + (aiResponse.usage?.output_tokens || 0),
-      cachedTokens: 0 // Anthropic doesn't have prompt caching
-    };
+    const aiResponse = await callClaude(prompt);
     
     // Log token usage to debug if we're hitting limits
-    console.log("Anthropic API Response Metadata:");
+    console.log("Claude API Response Metadata:");
     console.log("- Model:", aiResponse.model);
     console.log("- Stop reason:", aiResponse.stop_reason);
-    console.log("- Input tokens:", tokenUsage.promptTokens);
-    console.log("- Output tokens:", tokenUsage.completionTokens);
-    console.log("- Total tokens:", tokenUsage.totalTokens);
+    console.log("- Input tokens:", aiResponse.usage?.input_tokens);
+    console.log("- Output tokens:", aiResponse.usage?.output_tokens);
     
-    // Extract content from Anthropic response
     let content;
     if (aiResponse.stop_reason === 'max_tokens') {
-      console.error("⚠️ WARNING: Anthropic hit max_tokens limit! Response was truncated.");
+      console.error("⚠️ WARNING: Claude hit max_tokens limit! Response was truncated.");
       console.log("🔄 Retrying with reduced requirements to fit in token limit...");
       
       // Retry with a more concise prompt
-      const conciseSystemMessage = systemMessage
+      const concisePrompt = prompt
         .replace(/TOTAL: 60-80 skills maximum/g, 'TOTAL: 50-60 skills maximum')
         .replace(/Per category: 8-12 skills/g, 'Per category: 6-10 skills')
         .replace(/6 bullets each/g, '5 bullets each')
         .replace(/5-6 bullets per job/g, '4-5 bullets per job');
       
-      const retryMessages = [
-        { role: "system", content: conciseSystemMessage },
-        { role: "user", content: userMessage }
-      ];
-      
-      const retryResponse = await callAnthropic(retryMessages);
+      const retryResponse = await callClaude(concisePrompt);
       console.log("Retry Response Metadata:");
       console.log("- Stop reason:", retryResponse.stop_reason);
       console.log("- Output tokens:", retryResponse.usage?.output_tokens);
@@ -467,11 +357,6 @@ Remember: Extract company name and job title, then create the tailored resume fo
       console.error("Missing required fields in AI response:", Object.keys(resumeContent));
       throw new Error("AI response missing required fields (title, summary, skills, or experience)");
     }
-    
-    // Extract company and job title from AI response
-    const company = resumeContent.company || "Unknown Company";
-    const jobTitle = resumeContent.jobTitle || "Software Engineer";
-    console.log(`Extracted - Company: ${company}, Job Title: ${jobTitle}`);
 
     console.log("✅ AI content generated successfully");
     console.log("Skills categories:", Object.keys(resumeContent.skills).length);
@@ -485,8 +370,16 @@ Remember: Extract company name and job title, then create the tailored resume fo
       }
     });
 
-    // Load Handlebars template
-    const templatePath = path.join(process.cwd(), "templates", "Resume.html");
+    // Load Handlebars template (dynamic based on user selection)
+    const templateFile = `${templateName}.html`;
+    const templatePath = path.join(process.cwd(), "templates", templateFile);
+    
+    if (!fs.existsSync(templatePath)) {
+      console.error(`Template not found: ${templateFile}`);
+      return res.status(404).send(`Template "${templateName}" not found`);
+    }
+    
+    console.log(`Using template: ${templateFile}`);
     const templateSource = fs.readFileSync(templatePath, "utf-8");
     
     // Register Handlebars helpers
@@ -503,7 +396,7 @@ Remember: Extract company name and job title, then create the tailored resume fo
       return '';
     });
     
-    const template = Handlebars.compile(templateSource);
+    const compiledTemplate = Handlebars.compile(templateSource);
 
     // Prepare data for template
     const templateData = {
@@ -528,7 +421,7 @@ Remember: Extract company name and job title, then create the tailored resume fo
     };
 
     // Render HTML
-    const html = template(templateData);
+    const html = compiledTemplate(templateData);
     console.log("HTML rendered from template");
 
     // Generate PDF with Puppeteer
@@ -555,16 +448,27 @@ Remember: Extract company name and job title, then create the tailored resume fo
     await browser.close();
 
     console.log("PDF generated successfully!");
+
+    // Build safe filename: Name_company name_job title.pdf
+    const nameParts = profileData.name ? profileData.name.trim().split(/\s+/) : [];
+    let name;
+    if (!nameParts || nameParts.length === 0) name = 'resume';
+    else if (nameParts.length === 1) name = nameParts[0];
+    else name = `${nameParts[0]}_${nameParts[nameParts.length - 1]}`;
     
+    // Sanitize each part
+    const sanitize = (str) => str ? str.replace(/\s+/g, "_").replace(/[^A-Za-z0-9_-]/g, "") : "";
+    const sanitizedName = sanitize(name);
+    const sanitizedCompany = sanitize(companyName);
+    const sanitizedJobTitle = sanitize(jobTitle);
+    
+    // Build filename: Name_company name_job title
+    let baseName = sanitizedName;
+    if (sanitizedCompany) baseName += `_${sanitizedCompany}`;
+    if (sanitizedJobTitle) baseName += `_${sanitizedJobTitle}`;
+
     res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", `attachment; filename=${profileData.name.replace(' ', '_')}_${company}_${jobTitle}.pdf`);
-    
-    // Add token usage to response headers
-    res.setHeader("X-Prompt-Tokens", tokenUsage.promptTokens.toString());
-    res.setHeader("X-Completion-Tokens", tokenUsage.completionTokens.toString());
-    res.setHeader("X-Total-Tokens", tokenUsage.totalTokens.toString());
-    res.setHeader("X-Cached-Tokens", tokenUsage.cachedTokens.toString());
-    
+    res.setHeader("Content-Disposition", `attachment; filename="${baseName}.pdf"`);
     res.end(pdfBuffer);
     
 
