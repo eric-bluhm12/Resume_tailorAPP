@@ -61,18 +61,14 @@ export default function Home() {
       // Compute filename as Name_company name_job title.pdf
       const profile = profiles.find(p => p.id === selectedProfile);
       const profileName = profile ? profile.name : "Profile";
-      const nameParts = profileName.trim().split(/\s+/);
-      let name;
-      if (nameParts.length === 1) name = nameParts[0];
-      else name = `${nameParts[0]}_${nameParts[nameParts.length - 1]}`;
       
-      // Sanitize each part
-      const sanitize = (str) => str ? str.replace(/\s+/g, "_").replace(/[^A-Za-z0-9_-]/g, "") : "";
-      const sanitizedName = sanitize(name);
+      // Sanitize each part: remove spaces within section, remove special chars, keep only alphanumeric
+      const sanitize = (str) => str ? str.replace(/\s+/g, "").replace(/[^A-Za-z0-9]/g, "") : "";
+      const sanitizedName = sanitize(profileName);
       const sanitizedCompany = sanitize(companyName);
       const sanitizedJobTitle = sanitize(jobTitle);
       
-      // Build filename: Name_company name_job title
+      // Build filename: Name_company name_job title (underscores only between sections)
       let baseName = sanitizedName;
       if (sanitizedCompany) baseName += `_${sanitizedCompany}`;
       if (sanitizedJobTitle) baseName += `_${sanitizedJobTitle}`;
