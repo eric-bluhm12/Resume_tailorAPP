@@ -1,0 +1,48 @@
+{
+  "name": "Mateusz Han",
+  "email": "mat.han9@outlook.com",
+  "phone": "",
+  "location": "Warsaw, Mazowieckie, Poland",
+  "linkedin": "https://www.linkedin.com/in/mateusz-han-b69635391 ",
+  "website": "",
+
+  "experience": [
+    {
+      "company": "Cargo Express Freight",
+      "title": "Senior Software Engineer",
+      "location": "United States (Remote)",
+      "start_date": "Nov 2023",
+      "end_date": "Present"
+    },
+    {
+      "company": "PuzzleHR",
+      "title": "Senior Full Stack Engineer",
+      "location": "United States (Remote)",
+      "start_date": "Sep 2021",
+      "end_date": "Oct 2023"
+    },
+    {
+      "company": "BioTronik",
+      "title": "Full Stack Engineer",
+      "location": "Germany (Remote)",
+      "start_date": "Sep 2019",
+      "end_date": "Aug 2021"
+    },
+    {
+      "company": "10Clouds",
+      "title": "Software Engineer",
+      "location": "Poland (Onsite)",
+      "start_date": "Jun 2017",
+      "end_date": "Jul 2019"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor’s Degree in Computer Science",
+      "school": "Hanoi University of Science and Technology",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}
