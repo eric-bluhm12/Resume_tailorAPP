@@ -100,6 +100,7 @@ export default async function handler(req, res) {
     };
 
     const yearsOfExperience = calculateYears(profileData.experience);
+    const experienceText = yearsOfExperience > 10 ? "over 10 years" : `${yearsOfExperience} years`;
 
     // AI PROMPT: Generate ATS-optimized resume content as JSON
     const prompt = `You are a world-class ATS optimization expert. Create a resume that scores 95-100% on ATS.
@@ -113,7 +114,7 @@ Format: {"title":"...","summary":"...","skills":{...},"experience":[...]}
 ## PROFILE DATA:
 **Candidate:** ${profileData.name}
 **Contact:** ${profileData.email} | ${profileData.phone} | ${profileData.location}
-**Experience:** ${yearsOfExperience} years
+**Experience:** ${experienceText}
 
 **WORK HISTORY:**
 ${profileData.experience.map((job, idx) => {
@@ -166,7 +167,8 @@ Analyze JD "About Us" section for **10-15 domain/compliance keywords** specific 
 ### **3. SUMMARY** (5-6 lines, 8-12 JD keywords + 3-5 domain keywords)
 
 **Structure:**
-- **Line 1:** [JD Title] with ${yearsOfExperience}+ years in [domain from JD] across startup and enterprise environments
+- **Line 1:** [JD Title] with ${experienceText} in [domain from JD] across startup and enterprise environments
+**IMPORTANT:** If years of experience is over 10 years, use "over 10 years" in the summary, NOT exact years like "14+" or "15+".
 - **Line 2:** Expertise in [domain keyword] + [3-4 EXACT JD technologies WITH versions if specified]
 - **Line 3:** Proven track record in [domain keyword] + [key achievement with metric: %, $, time, scale]
 - **Line 4:** Proficient in [3-4 more JD technologies/methodologies]
@@ -175,6 +177,9 @@ Analyze JD "About Us" section for **10-15 domain/compliance keywords** specific 
 
 **Example (FinTech):**
 "Senior Full Stack Engineer with 8+ years building scalable fintech platforms. Expertise in **payment processing systems**, **PCI-DSS compliance**, React.js 18, Node.js 20, and PostgreSQL. Proven track record implementing **fraud detection algorithms** that reduced chargebacks by 40% and processed $500M+ annually. Proficient in AWS infrastructure, Docker, Kubernetes, and **KYC/AML compliance frameworks**. Collaborative problem-solver with experience leading cross-functional teams in fast-paced startup environments. Strong focus on secure payment infrastructure, regulatory compliance, and delivering high-performance financial applications."
+
+**Example (Over 10 years):**
+"Senior Full Stack Engineer with over 10 years building scalable fintech platforms. Expertise in **payment processing systems**, **PCI-DSS compliance**, React.js 18, Node.js 20, and PostgreSQL..."
 
 ---
 
