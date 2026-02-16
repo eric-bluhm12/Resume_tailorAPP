@@ -533,7 +533,7 @@ export default function Home() {
                 <div>
                   <div style={{ fontSize: "24px", marginBottom: "8px" }}>⚡</div>
                   <div style={{ fontSize: "13px", color: "#94a3b8", fontWeight: "500" }}>AI Powered</div>
-                  <div style={{ fontSize: "11px", color: "#64748b" }}>Claude Anthropic</div>
+                  <div style={{ fontSize: "11px", color: "#64748b" }}>GPT-5-mini</div>
                 </div>
                 <div>
                   <div style={{ fontSize: "24px", marginBottom: "8px" }}>📄</div>
