@@ -1,0 +1,55 @@
+{
+  "name": "Gabriel Lewis",
+  "email": "gabriel.lewis54@outlook.com",
+  "phone": "+1 (724) 262-6158",
+  "location": "Wyncote, Pennsylvania, United States",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "BrightOps",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "June 2023",
+      "end_date": "Present"
+    },
+    {
+      "company": "SambaSafety",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "February 2019",
+      "end_date": "May 2023"
+    },
+    {
+      "company": "Accenture",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "May 2017",
+      "end_date": "February 2019"
+    },
+    {
+      "company": "Amazon Web Services (AWS)",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "June 2016",
+      "end_date": "May 2017"
+    },
+    {
+      "company": "Amazon Web Services (AWS)",
+      "title": "Software Engineer Intern",
+      "location": "",
+      "start_date": "January 2016",
+      "end_date": "June 2016"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "Texas Tech University",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}

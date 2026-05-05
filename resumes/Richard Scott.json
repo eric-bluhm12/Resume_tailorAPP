@@ -1,0 +1,55 @@
+{
+  "name": "Richard Scott",
+  "email": "richard.scott154@outlook.com",
+  "phone": "+1 (218) 305-9661",
+  "location": "Alvin, Texas, United States",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Hexagon AB",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "July 2024",
+      "end_date": "Present"
+    },
+    {
+      "company": "OpenTeams",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "May 2019",
+      "end_date": "July 2024"
+    },
+    {
+      "company": "Amazon",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "July 2017",
+      "end_date": "May 2019"
+    },
+    {
+      "company": "NVIDIA",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "March 2016",
+      "end_date": "June 2017"
+    },
+    {
+      "company": "NVIDIA",
+      "title": "Software Engineer Intern",
+      "location": "",
+      "start_date": "July 2015",
+      "end_date": "March 2016"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "San José State University",
+      "start_year": "2011",
+      "end_year": "2015"
+    }
+  ]
+}

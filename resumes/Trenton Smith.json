@@ -1,0 +1,48 @@
+{
+  "name": "Trenton Smith",
+  "email": "trenton0091235@outlook.com",
+  "phone": "",
+  "location": "Lindale, Texas, United States",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "PuzzleHR",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "August 2023",
+      "end_date": "Present"
+    },
+    {
+      "company": "Hexagon",
+      "title": "Senior AI Engineer",
+      "location": "",
+      "start_date": "January 2019",
+      "end_date": "July 2023"
+    },
+    {
+      "company": "Amazon",
+      "title": "AI Engineer",
+      "location": "",
+      "start_date": "June 2017",
+      "end_date": "January 2019"
+    },
+    {
+      "company": "NVIDIA",
+      "title": "Software Developer",
+      "location": "",
+      "start_date": "October 2015",
+      "end_date": "May 2017"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "Texas Tech University",
+      "start_year": "2011",
+      "end_year": "2015"
+    }
+  ]
+}
