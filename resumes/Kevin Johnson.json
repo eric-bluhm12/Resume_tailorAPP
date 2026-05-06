@@ -1,0 +1,48 @@
+{
+  "name": "Kevin Johnson",
+  "email": "kevinjohnson102625@outlook.com",
+  "phone": "+1 (847) 865-4591",
+  "location": "Brownsboro, Texas, United States",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Globant",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "June 2023",
+      "end_date": "Present"
+    },
+    {
+      "company": "Dumbstruck, Inc",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "February 2020",
+      "end_date": "May 2023"
+    },
+    {
+      "company": "Amazon",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "July 2017",
+      "end_date": "February 2020"
+    },
+    {
+      "company": "Soft Tech Consulting",
+      "title": "Software Developer",
+      "location": "",
+      "start_date": "November 2014",
+      "end_date": "May 2017"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "Texas Tech University",
+      "start_year": "2010",
+      "end_year": "2014"
+    }
+  ]
+}
