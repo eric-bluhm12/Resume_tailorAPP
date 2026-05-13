@@ -1,0 +1,48 @@
+{
+  "name": "Alan Hussain",
+  "email": "alan.hussain1154@outlook.com",
+  "phone": "",
+  "location": "Warsaw, Mazowieckie, Poland",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "PuzzleHR",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "April 2024",
+      "end_date": "Present"
+    },
+    {
+      "company": "Cargo Express Freight Corp",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "May 2021",
+      "end_date": "April 2024"
+    },
+    {
+      "company": "Netguru",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "September 2018",
+      "end_date": "May 2021"
+    },
+    {
+      "company": "10Clouds",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "September 2016",
+      "end_date": "August 2018"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "University of Cambridge",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}

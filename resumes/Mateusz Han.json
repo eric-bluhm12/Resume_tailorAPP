@@ -1,0 +1,48 @@
+{
+  "name": "Mateusz Han",
+  "email": "mat.han54@outlook.com",
+  "phone": "",
+  "location": "Warsaw, Mazowieckie, Poland",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Cargo Express Freight",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "July 2023",
+      "end_date": "Present"
+    },
+    {
+      "company": "Globant",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "July 2020",
+      "end_date": "June 2023"
+    },
+    {
+      "company": "Lenovo",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "September 2018",
+      "end_date": "July 2020"
+    },
+    {
+      "company": "10Clouds",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "October 2016",
+      "end_date": "September 2018"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "University of Birmingham",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Tony Stanescu",
+  "email": "tony.stanescu154@outlook.com",
+  "phone": "",
+  "location": "Bucharest, Romania",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Hexagon AB",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "August 2024",
+      "end_date": "Present"
+    },
+    {
+      "company": "Zitec",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "August 2021",
+      "end_date": "June 2024"
+    },
+    {
+      "company": "Tailent",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "August 2018",
+      "end_date": "August 2021"
+    },
+    {
+      "company": "Lenovo",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "September 2016",
+      "end_date": "July 2018"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "University of Cambridge",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Mateusz Nguyen",
+  "email": "mat.ngu2154@gmail.com",
+  "phone": "",
+  "location": "Warsaw, Mazowieckie, Poland",
+  "linkedin": "https://www.linkedin.com/in/mateusz-nguyen-2145793b8/",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "SambaSafety",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "May 2023",
+      "end_date": "Present"
+    },
+    {
+      "company": "Hexagon",
+      "title": "Senior AI Engineer",
+      "location": "",
+      "start_date": "May 2021",
+      "end_date": "May 2023"
+    },
+    {
+      "company": "Netguru",
+      "title": "AI Engineer",
+      "location": "",
+      "start_date": "April 2019",
+      "end_date": "April 2021"
+    },
+    {
+      "company": "Atos",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "January 2016",
+      "end_date": "March 2019"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "University of Cambridge",
+      "start_year": "2011",
+      "end_year": "2015"
+    }
+  ]
+}
