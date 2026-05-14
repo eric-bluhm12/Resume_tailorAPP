@@ -1,5 +1,23 @@
 import { useState, useEffect } from "react";
 
+/** Prefer server-suggested name (from resume JSON `name`), not the profiles list label from the file stem. */
+function fileNameFromContentDisposition(header) {
+  if (!header || typeof header !== "string") return null;
+  const star = /filename\*=UTF-8''([^;\s]+)/i.exec(header);
+  if (star) {
+    try {
+      return decodeURIComponent(star[1].replace(/\+/g, " "));
+    } catch {
+      return null;
+    }
+  }
+  const quoted = /filename="([^"]+)"/i.exec(header);
+  if (quoted) return quoted[1];
+  const plain = /filename=([^;\s]+)/i.exec(header);
+  if (plain) return plain[1].replace(/^["']|["']$/g, "");
+  return null;
+}
+
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
   const [templates, setTemplates] = useState([]);
@@ -51,27 +69,14 @@ export default function Home() {
         throw new Error(errorText || "Failed to generate PDF");
       }
 
+      const cd = genRes.headers.get("content-disposition");
+      let fileName = fileNameFromContentDisposition(cd);
+      if (!fileName || !/\.pdf$/i.test(fileName)) fileName = "resume.pdf";
+
       const blob = await genRes.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      
-      // Compute filename as Name_company name_job title.pdf
-      const profile = profiles.find(p => p.id === selectedProfile);
-      const profileName = profile ? profile.name : "Profile";
-      
-      // Sanitize each part: remove spaces within section, remove special chars, keep only alphanumeric
-      const sanitize = (str) => str ? str.replace(/\s+/g, "").replace(/[^A-Za-z0-9]/g, "") : "";
-      const sanitizedName = sanitize(profileName);
-      const sanitizedCompany = sanitize(companyName);
-      const sanitizedJobTitle = sanitize(jobTitle);
-      
-      // Build filename: Name_company name_job title (underscores only between sections)
-      let baseName = sanitizedName;
-      if (sanitizedCompany) baseName += `_${sanitizedCompany}`;
-      if (sanitizedJobTitle) baseName += `_${sanitizedJobTitle}`;
-      
-      const fileName = `${baseName}.pdf`;
       a.download = fileName;
       
       a.click();
