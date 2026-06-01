@@ -1,17 +1,17 @@
 {
   "name": "Jody Knight",
   "email": "jody.knight0018@outlook.com",
-  "phone": "+1 737 244 0383",
+  "phone": "",
   "location": "Temple, TX, United States",
   "linkedin": "",
   "website": "",
 
   "experience": [
     {
-      "company": "PuzzleHR",
+      "company": "Conversion Logix",
       "title": "Senior Software Engineer",
       "location": "",
-      "start_date": "Sep 2022",
+      "start_date": "Aug 2022",
       "end_date": "present"
     },
     {
@@ -25,8 +25,8 @@
       "company": "Accenture",
       "title": "Software Engineer",
       "location": "",
-      "start_date": "Jun 2016",
-      "end_date": "Oct 2018"
+      "start_date": "May 2016",
+      "end_date": "Dec 2018"
     },
     {
       "company": "ServiceNow",
