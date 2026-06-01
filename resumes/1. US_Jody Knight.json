@@ -1,0 +1,48 @@
+{
+  "name": "Jody Knight",
+  "email": "jody.knight0018@outlook.com",
+  "phone": "+1 737 244 0383",
+  "location": "Temple, TX, United States",
+  "linkedin": "",
+  "website": "",
+
+  "experience": [
+    {
+      "company": "PuzzleHR",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "Sep 2022",
+      "end_date": "present"
+    },
+    {
+      "company": "Hexagon AB",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "Jan 2019",
+      "end_date": "Jul 2022"
+    },
+    {
+      "company": "Accenture",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "Jun 2016",
+      "end_date": "Oct 2018"
+    },
+    {
+      "company": "ServiceNow",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "Sep 2014",
+      "end_date": "Apr 2016"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science",
+      "school": "Texas Tech University",
+      "start_year": "2010",
+      "end_year": "2014"
+    }
+  ]
+}
