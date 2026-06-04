@@ -1,0 +1,48 @@
+{
+  "name": "Mark Cruz",
+  "email": "mark.cruz54@outlook.com",
+  "phone": "",
+  "location": "Quezon City, Metro Manila, Philippines",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "OpenTeams",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "September 2024",
+      "end_date": "Present"
+    },
+    {
+      "company": "Proudcloud",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "July 2020",
+      "end_date": "August 2024"
+    },
+    {
+      "company": "PWF | Property Wealth Finance",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "August 2018",
+      "end_date": "June 2020"
+    },
+    {
+      "company": "WeLab",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "September 2016",
+      "end_date": "August 2018"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "The Hong Kong University of Science and Technology",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Aundrey Espeleta",
+  "email": "andy.espel54@outlook.com",
+  "phone": "",
+  "location": "Porac, Pampanga, Philippines",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "SambaSafety",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "September 2024",
+      "end_date": "Present"
+    },
+    {
+      "company": "Kinguin",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "September 2021",
+      "end_date": "September 2024"
+    },
+    {
+      "company": "Showpo",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "September 2019",
+      "end_date": "August 2021"
+    },
+    {
+      "company": "Accenture in the Philippines",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "October 2016",
+      "end_date": "September 2019"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "Tokyo Institute of Technology",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}

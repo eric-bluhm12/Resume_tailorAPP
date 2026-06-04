@@ -1,0 +1,55 @@
+{
+  "name": "Robert Miller",
+  "email": "robert.miller254@outlook.com",
+  "phone": "+1 (346) 291 5792",
+  "location": "Brazoria, TX, United States",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "SoftServe",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "June 2024",
+      "end_date": "Present"
+    },
+    {
+      "company": "OpenTeams",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "July 2019",
+      "end_date": "May 2024"
+    },
+    {
+      "company": "Intrado",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "October 2017",
+      "end_date": "July 2019"
+    },
+    {
+      "company": "Oracle",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "April 2016",
+      "end_date": "September 2017"
+    },
+    {
+      "company": "Oracle",
+      "title": "Software Engineer Intern",
+      "location": "",
+      "start_date": "October 2015",
+      "end_date": "April 2016"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "school": "Texas Tech University",
+      "start_year": "2011",
+      "end_year": "2015"
+    }
+  ]
+}

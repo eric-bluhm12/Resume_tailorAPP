@@ -1,0 +1,48 @@
+{
+  "name": "Michael Cristo",
+  "email": "michael.cristo541@outlook.com",
+  "phone": "",
+  "location": "Edwards, CO, United States",
+  "linkedin": "",
+  "website": "",
+
+  "experience": [
+    {
+      "company": "Thoughtworks",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "June 2024",
+      "end_date": "Present"
+    },
+    {
+      "company": "BrightOps",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "October 2019",
+      "end_date": "June 2024"
+    },
+    {
+      "company": "Snapsheet Inc",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "August 2018",
+      "end_date": "October 2019"
+    },
+    {
+      "company": "OpenAI",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "September 2016",
+      "end_date": "August 2018"
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "school": "The University of Texas at Arlington",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}
