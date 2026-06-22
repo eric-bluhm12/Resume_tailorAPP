@@ -1,0 +1,61 @@
+{
+  "name": "Krzysztof Nguyen",
+  "email": "krzysztof.nguyen@outlook.com",
+  "phone": "",
+  "location": "Kraków, Poland",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "LabGenius",
+      "title": "Senior AI/ML Engineer",
+      "location": "",
+      "start_date": "Feb 2022",
+      "end_date": "Present"
+    },
+    {
+      "company": "Satalia",
+      "title": "AI/ML Engineer",
+      "location": "",
+      "start_date": "May 2019",
+      "end_date": "Jan 2022"
+    },
+    {
+      "company": "Codevate",
+      "title": "Data Engineer",
+      "location": "",
+      "start_date": "Dec 2017",
+      "end_date": "Apr 2019"
+    },
+    {
+      "company": "FPT Software",
+      "title": "Full Stack Engineer",
+      "location": "",
+      "start_date": "Jun 2015",
+      "end_date": "Nov 2017"
+    },
+    {
+      "company": "FPT Software",
+      "title": "Frontend Developer",
+      "location": "Vietnam",
+      "start_date": "Jan 2014",
+      "end_date": "May 2015"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Master of Artifical Intelligence & Data Sciene",
+      "school": "Aston University",
+      "start_year": "2017",
+      "end_year": "2019"
+    },
+    {
+      "degree": "Bachelor of Computer Science",
+      "school": "Vietnam National University, Hanoi",
+      "start_year": "2009",
+      "end_year": "2013"
+    }
+  ]
+}
