@@ -1,0 +1,48 @@
+{
+  "name": "Konrad Wardęcki",
+  "email": "konrad.ward221@outlook.com",
+  "phone": "",
+  "location": "Lublin, Poland",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Zora",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "August 2023",
+      "end_date": "Present"
+    },
+    {
+      "company": "FTI Consulting",
+      "title": "Senior Full Stack Engineer",
+      "location": "",
+      "start_date": "February 2020",
+      "end_date": "June 2023"
+    },
+    {
+      "company": "EPAM Systems",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "November 2017",
+      "end_date": "December 2019"
+    },
+    {
+      "company": "SoftServe",
+      "title": "Full Stack Engineer",
+      "location": "",
+      "start_date": "October 2016",
+      "end_date": "September 2017"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "University of West London",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}
