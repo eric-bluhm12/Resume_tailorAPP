@@ -1,0 +1,48 @@
+{
+  "name": "Bartosz Boron",
+  "email": "bartosz.boron-tech@outlook.com",
+  "phone": "",
+  "location": "Warsaw, Mazowieckie, Poland",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Hexagon",
+      "title": "Senior DevOps Engineer",
+      "location": "",
+      "start_date": "April 2023",
+      "end_date": "Present"
+    },
+    {
+      "company": "BrightOps",
+      "title": "DevSecOps Engineer",
+      "location": "",
+      "start_date": "November 2021",
+      "end_date": "February 2023"
+    },
+    {
+      "company": "Klarna",
+      "title": "DevOps Engineer",
+      "location": "",
+      "start_date": "January 2019",
+      "end_date": "July 2021"
+    },
+    {
+      "company": "Accenture",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "October 2017",
+      "end_date": "December 2018"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science – Computer Science",
+      "school": "Boston University",
+      "start_year": "2013",
+      "end_year": "2017"
+    }
+  ]
+}
