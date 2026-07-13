@@ -1,0 +1,51 @@
+{
+  "name": "Krzysztof Han",
+  "email": "chris.han.co298@outlook.com",
+  "phone": "",
+  "location": "Warsaw, Poland",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Netcompany",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "August 2024",
+      "end_date": "Present"
+    },
+
+    {
+      "company": "Materna",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "January 2022",
+      "end_date": "July 2024"
+    },
+
+    {
+      "company": "Endava",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "November 2019",
+      "end_date": "December 2021"
+    },
+
+    {
+      "company": "Asseco Poland",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "December 2016",
+      "end_date": "October 2019"
+    } 
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science, Computer Science",
+      "school": "Warsaw University of Technology",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}

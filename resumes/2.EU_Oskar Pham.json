@@ -1,0 +1,51 @@
+{
+  "name": "Oskar Pham",
+  "email": "oskar.pham0189@outlook.com",
+  "phone": "",
+  "location": "Warsaw, Poland",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Capgemini",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "June 2024",
+      "end_date": "Present"
+    },
+
+    {
+      "company": "T-Systems International",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "June 2021",
+      "end_date": "May 2024"
+    },
+
+    {
+      "company": "Atos",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "April 2019",
+      "end_date": "May 2021"
+    },
+
+    {
+      "company": "Sii Poland",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "February 2017",
+      "end_date": "March 2019"
+    } 
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science, Computer Science",
+      "school": "Vietnam National University, Hanoi",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}

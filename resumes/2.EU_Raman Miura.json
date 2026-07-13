@@ -1,0 +1,51 @@
+{
+  "name": "Raman Miura",
+  "email": "raman.miura1009@outlook.com",
+  "phone": "",
+  "location": "Lublin, Poland",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "BJSS",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "September 2024",
+      "end_date": "Present"
+    },
+
+    {
+      "company": "Deloitte",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "September 2022",
+      "end_date": "September 2024"
+    },
+
+    {
+      "company": "BIOTRONIK",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "October 2019",
+      "end_date": "August 2022"
+    },
+
+    {
+      "company": "Netguru",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "November 2016",
+      "end_date": "September 2019"
+    } 
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Science, Computer Science",
+      "school": "University of Cambridge",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}
