@@ -1,0 +1,51 @@
+{
+  "name": "Mateusz Skalecki",
+  "email": "mateusz.skala-dev@outlook.com",
+  "phone": "",
+  "location": "Poznań, Poland",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Databricks",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "Aug 2022",
+      "end_date": "Present"
+    },
+
+    {
+      "company": "C3.ai",
+      "title": "AI Integration Engineer",
+      "location": "",
+      "start_date": "Apr 2021",
+      "end_date": "Jun 2022"
+    },
+
+    {
+      "company": "Luxsoft",
+      "title": "ML Engineer",
+      "location": "",
+      "start_date": "Jan 2020",
+      "end_date": "Mar 2021"
+    },
+
+    {
+      "company": "Accenture",
+      "title": "Software Engineer",
+      "location": "",
+      "start_date": "Jan 2017",
+      "end_date": "Oct 2019"
+    } 
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science",
+      "school": "Aston University",
+      "start_year": "2012",
+      "end_year": "2016"
+    }
+  ]
+}

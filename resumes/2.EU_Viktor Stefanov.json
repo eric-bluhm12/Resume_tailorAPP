@@ -1,0 +1,48 @@
+{
+  "name": "Viktor Stefanov",
+  "email": "viktor.stefanove555@outlook.com",
+  "phone": "",
+  "location": "Varna, Bulgaria",
+  "linkedin": "",
+  "website": "",
+  
+  "experience": [
+    {
+      "company": "Pinecone",
+      "title": "Senior Software Engineer",
+      "location": "",
+      "start_date": "May 2022",
+      "end_date": "present"
+    },
+    {
+      "company": "Deloitte",
+      "title": "Senior FullStack Engineer",
+      "location": "",
+      "start_date": "Feb 2021",
+      "end_date": "Mar 2022"
+    },
+    {
+      "company": "Kelvin Health",
+      "title": "FullStack Engineer",
+      "location": "",
+      "start_date": "Nov 2018",
+      "end_date": "Jan 2021"
+    },
+    {
+      "company": "Stanga1",
+      "title": "FullStack Developer",
+      "location": "",
+      "start_date": "Oct 2017",
+      "end_date": "Oct 2018"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science",
+      "school": "Technical University of Sofia",
+      "start_year": "2013",
+      "end_year": "2017"
+    }
+  ]
+}
